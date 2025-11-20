@@ -1,28 +1,32 @@
 import typer
-from notehb.core import files_read, initial_config, list_task, files_save
+import os
+from .core import files_read, initial_config, list_task
+
 app = typer.Typer()
 
 config = files_read('~/.config/notehb/.config.json')
-config_file_list = config[]
+# config_file_list = config[]
+file = '~/.config/notehb/hb_list/default.json'
 initial_config()
 
-@app.command(name = 'list', help = 'chema')
-def ls(ls: bool = False):
-    if ls:
-        list_list = os.system(f'ls {}')
-    else:
+@app.command()
+def list(
+        list: bool = typer.Option(
+            False, 
+            "-l", "--list", 
+            help="Listar TODAS las tareas."
+            )
+        ):
+    if list: 
+        data = files_read(file)
+        list_task(data)
 
-@app.command(name = 'task', help = 'chema')
-def list(ls: bool = False):
-    if ls:
-        
-    else:
 
-def add(name: str, add: bool = False):
-    if formal:
-        print(f"Goodbye Ms. {name}. Have a good day.")
-    else:
-        print(f"Bye {name}!")
+# def add(name: str, add: bool = False):
+#     if formal:
+#         print(f"Goodbye Ms. {name}. Have a good day.")
+#     else:
+#         print(f"Bye {name}!")
 
 
 if __name__ == "__main__":
